@@ -43,6 +43,12 @@ def mean_dev_demo(m1, m2):
     print(m)
     print(dev)
 
+def logic_demo(m1,m2):
+    dst = cv.bitwise_and(m1, m2)
+    dst1 = cv.bitwise_or(m1, m2)
+    cv.imshow("logic_demo_and", dst)
+    cv.imshow("logic_demo_or", dst1)
+
 
 src1 = cv.imread("C:\\Users\\ZhouYu\\Desktop\\8.jpg")
 src2 = cv.imread("C:\\Users\\ZhouYu\\Desktop\\9.jpg")
@@ -57,8 +63,9 @@ cv.imshow("input image2", src2)
 # subtract_demo(src1, src2)
 # divide_demo(src1, src2)
 # multiply_demo(src1, src2)
-mean_demo(src1, src2)
-mean_dev_demo(src1, src2)
+# mean_demo(src1, src2)
+# mean_dev_demo(src1, src2)
+logic_demo(src2, src1)
 cv.waitKey(0)
 
 cv.destroyAllWindows()
