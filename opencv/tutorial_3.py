@@ -8,11 +8,13 @@ def extrace_object_demo():  # 标注测定颜色
         ret, frame = capture.read()
         if ret == False:
             break
-        hsv = cv.cvtColor(frame, cv.COLOR_BGR2HSV)
-        lower_hsv = np.array([156, 43, 46])
-        upper_hsv = np.array([180, 255, 255])
+        hsv = cv.cvtColor(frame, cv.COLOR_BGR2HSV)  # 转换颜色为HSV
+        lower_hsv = np.array([156, 43, 46])  # 红色的下界
+        upper_hsv = np.array([180, 255, 255])  # 红色的上界
         mask = cv.inRange(hsv, lowerb=lower_hsv, upperb=upper_hsv)
-        cv.imshow("video", mask)
+        dst = cv.bitwise_and(frame, frame, mask=mask)
+        cv.imshow("video", frame)
+        cv.imshow("mask", dst)
         c = cv.waitKey(40)
         if c == 27:
             break

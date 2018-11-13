@@ -43,11 +43,21 @@ def mean_dev_demo(m1, m2):
     print(m)
     print(dev)
 
+
 def logic_demo(m1,m2):
     dst = cv.bitwise_and(m1, m2)
     dst1 = cv.bitwise_or(m1, m2)
+    dst2 = cv.bitwise_not(m1)
     cv.imshow("logic_demo_and", dst)
     cv.imshow("logic_demo_or", dst1)
+    cv.imshow("logic_demo_not", dst2)
+
+
+def contract_brightness_demo(image, c, b):
+    h, w, ch = image.shape
+    blank = np.zeros([h, w, ch], image.dtype)
+    dst = cv.addWeighted(image, c, blank, 1-c, b)  # c为设定的权重，b为增加的亮度
+    cv.imshow("con_bri_demo", dst)
 
 
 src1 = cv.imread("C:\\Users\\ZhouYu\\Desktop\\8.jpg")
@@ -57,7 +67,9 @@ print(src2.shape)
 cv.namedWindow("input image1", cv.WINDOW_AUTOSIZE)
 cv.imshow("input image1", src1)
 cv.imshow("input image2", src2)
-
+src = cv.imread("C:\\Users\\ZhouYu\\Desktop\\9.jpg")
+cv.imshow("image2", src)
+contract_brightness_demo(src, 1.2, 10)
 
 # add_demo(src1, src2)
 # subtract_demo(src1, src2)
@@ -65,7 +77,7 @@ cv.imshow("input image2", src2)
 # multiply_demo(src1, src2)
 # mean_demo(src1, src2)
 # mean_dev_demo(src1, src2)
-logic_demo(src2, src1)
+# logic_demo(src2, src1)
 cv.waitKey(0)
 
 cv.destroyAllWindows()
