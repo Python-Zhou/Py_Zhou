@@ -27,6 +27,7 @@ cv.namedWindow("input image", cv.WINDOW_AUTOSIZE)
 cv.imshow("input image", src)
 # fill_color_demo(src)
 fill_binary()
+
 '''
 face = src[50:250, 100:300]
 gray = cv.cvtColor(face, cv.COLOR_BGR2GRAY)
