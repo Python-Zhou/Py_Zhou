@@ -15,7 +15,7 @@ def access_pixels(image):
                 image[row, col, c] = 255 - pv
     cv.imshow("pixel_date", image)
 
-# 像素去反,inverse是自带的API，速度快
+# 像素取反,inverse是自带的API，速度快
 def inverse(image):
     dst = cv.bitwise_not(image)
     cv.imshow("取反", dst)
