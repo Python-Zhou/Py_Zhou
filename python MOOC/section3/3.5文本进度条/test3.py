@@ -1,8 +1,10 @@
 import time
+import math
 scale = 50
 print("执行开始".center(scale//2, "-"))
 start = time.perf_counter()
 for i in range(scale+1):
+    i = i + int((1-math.sin(i*math.pi*2 + math.pi/2)/(-8)))
     a = '*' * i
     b = '.' * (scale - i)
     c = (i/scale)*100
